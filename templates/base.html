@@ -1,0 +1,96 @@
+{% load static %}
+<!doctype html>
+<html lang="cs-cz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %}</title>
+
+    {% block head %}
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    {% endblock %}
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg club-navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="Logo" class="logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">Domů</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Zápasy</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Tabulky</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Registrace</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Přihlášení</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    </header>
+<section class="py-2">
+    <div class="row">
+  <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Příští zápas</h5>
+        <p class="card-text">9.8 2026 18:00 Tornádo Hradiště - Město Touškov B</p>
+        <a href="#" class="btn btn-primary">Nahlaš se</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Příští trénink</h5>
+        <p class="card-text">3.9 2026 17:00 - 18:30 Tornádo Hradiště</p>
+        <a href="#" class="btn btn-primary">Nahlaš se</a>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="py-5">
+    <main class="container mt-4">{% block content %}
+      <div class="container text-center">
+      {% endblock %}</main>
+  <section class="py-5">
+      <div class="card">
+  <h5 class="card-header">Poslední zápas</h5>
+  <div class="card-body">
+    <h5 class="card-title">Tornádo Hradiště - Robstav 5:0 (2:0)</h5>
+    <a href="#" class="btn btn-primary">Detail Zápasu</a>
+  </div>
+</div>
+    {% block scripts %}
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    {% endblock %}
+  </body>
+  <footer>
+    <p>&copy; 2026 Tornádo Hradiště</p>
+  </footer>
+</html>

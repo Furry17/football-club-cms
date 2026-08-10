@@ -1,0 +1,15 @@
+:root {
+    --club-green: #2BB673;
+    --club-green-dark: #209A61;
+    --club-white: #ffffff;
+    --club-text: #212529;
+}
+
+.logo {
+    max-height: 50px;
+    width: auto;
+}
+.club-navbar {
+    background-color: var(--club-green);
+}
+
