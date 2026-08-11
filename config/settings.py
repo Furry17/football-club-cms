@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # Local apps
     'pages',
     'matches',
+    'training',
     # Django apps
     'django.contrib.admin',
     'django.contrib.auth',

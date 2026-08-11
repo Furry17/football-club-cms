@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="mb-4">Tréninky</h1>
+    <div class="list-group">
+        {% for training in trainings %}
+        <a href="{% url 'training_detail' training.pk %}" class="list-group-item list-group-item-action">{{ training }}</a>
+        {% empty %}
+            <div class="list-group-item">Žádné tréninky k zobrazení.</div>
+        {% endfor %}
+    </div>
+
+{% endblock content %}

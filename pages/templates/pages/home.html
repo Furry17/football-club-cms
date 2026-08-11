@@ -7,9 +7,9 @@
 {% block content %}
 
 <section class="py-2">
-  <div class="row">
-    <div class="col-sm-6 mb-3 mb-sm-0">
-      <div class="card">
+  <div class="row align-items-stretch">
+    <div class="col-md-6 d-flex">
+      <div class="card w-100">
         <div class="card-body">
           <h5 class="card-title">Příští zápas</h5>
 
@@ -29,17 +29,23 @@
             {% endif %}
           </p>
 
-          <a href="#" class="btn btn-primary">Nahlaš se</a>
+          <a href="{% url 'match_detail' next_match.pk %}" class="btn btn-primary">Detail Zápasu</a>
         </div>
       </div>
     </div>
 
-    <div class="col-sm-6">
-      <div class="card">
+    <div class="col-md-6 d-flex">
+      <div class="card w-100">
         <div class="card-body">
           <h5 class="card-title">Příští trénink</h5>
-          <p class="card-text">3.9.2026 17:00–18:30 Tornádo Hradiště</p>
-          <a href="#" class="btn btn-primary">Nahlaš se</a>
+          <p class="card-text">
+            {% if next_training %}
+              {{ next_training.training_date|date:"d.m.Y H:i" }} – {{ next_training.location }}
+              <a href="{% url 'training_detail' next_training.pk %}" class="btn btn-primary">Nahlaš se</a>
+            {% else %}
+              Žádný nadcházející trénink.
+            {% endif %}
+          </p>
         </div>
       </div>
     </div>
@@ -50,5 +56,34 @@
   <h1>Vítejte na stránkách Tornáda Hradiště</h1>
   <p>Jsme malý fotbalový klub z Plzně, hrající 9. nejvyšší soutěž.</p>
 </section>
+<section class="py-5">
+      <div class="card">
+  <h5 class="card-header">Poslední zápas</h5>
+  <div class="card-body">
+    <small class="text-muted my-3">{{ last_match.match_date|date:"d.m.Y H:i" }}</small>
+    <h4 class="card-title my-2">
+      {% if last_match %}
+        {% if last_match.is_home %}
+          Tornádo Hradiště – {{ last_match.opponent }}
+        {% else %}
+          {{ last_match.opponent }} – Tornádo Hradiště
+        {% endif %}
+
+        <br>
+        {% if last_match.goals_for is not None %}
+        <h4 class="my-3">
+          {{ last_match.goals_for }}:{{ last_match.goals_against }}
+        </h4>
+        {% else %}
+          Výsledek zatím není k dispozici.
+        {% endif %}
+      {% else %}
+        Žádný poslední zápas k zobrazení.
+      {% endif %}
+      </h4>
+      <a href="{% url 'match_detail' last_match.pk %}" class="btn btn-primary">Detail Zápasu</a>
+    </div>
+    </div>
+    </section>
 
 {% endblock %}
