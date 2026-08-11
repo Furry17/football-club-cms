@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="mb-4">Zápasy</h1>
+    <div class="list-group">
+        {% for match in matches %}
+            <a href="{% url 'match_detail' match.pk %}" class="list-group-item list-group-item-action">
+            <div class="d-flex justify-content-between">
+        <strong>
+            {% if match.is_home %}
+                Tornádo Hradiště – {{ match.opponent }}
+            {% else %}
+                {{ match.opponent }} – Tornádo Hradiště
+            {% endif %}
+        </strong>
+
+        {% if match.goals_for is not None %}
+            <span>{{ match.goals_for }} : {{ match.goals_against }}</span>
+        {% else %}
+            <span>- : -</span>
+        {% endif %}
+    </div>
+
+    <small class="text-muted">
+        {{ match.match_date|date:"d.m.Y H:i" }}
+    </small>
+
+</a>
+        {% empty %}
+            <div class="list-group-item">Žádné zápasy k zobrazení.</div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h1 class="mb-4">
+                {% if match.is_home %}
+                    Tornádo Hradiště – {{ match.opponent }}
+                {% else %}
+                    {{ match.opponent }} – Tornádo Hradiště
+                {% endif %}
+            </h1>
+            <p><strong>Místo:</strong> {{ match.location }}</p>
+            <p><strong>Datum:</strong> {{ match.match_date|date:"d.m.Y H:i" }}</p>
+            <p><strong>Výsledek:</strong> {% if match.goals_for is not None %}{{ match.goals_for }} : {{ match.goals_against }}{% else %}- : -{% endif %}</p>
+            <a href="{% url 'match_list' %}" class="btn btn-secondary">Zpět na seznam zápasů</a>
+        </div>
+    </div>
+{% endblock %}
