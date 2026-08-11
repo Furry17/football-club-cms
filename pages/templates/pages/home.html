@@ -1,8 +1,54 @@
 {% extends 'base.html' %}
 
-{% block title %}Úvodní strana{% endblock %}
+{% block title %}
+Úvodní strana
+{% endblock %}
 
 {% block content %}
-  <h1>Vítejte na stránkách Tornádo Hradiště</h1>
+
+<section class="py-2">
+  <div class="row">
+    <div class="col-sm-6 mb-3 mb-sm-0">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Příští zápas</h5>
+
+          <p class="card-text">
+            {% if next_match %}
+              {% if next_match.is_home %}
+                <strong>Tornádo Hradiště – {{ next_match.opponent }}</strong>
+              {% else %}
+                <strong>{{ next_match.opponent }} – Tornádo Hradiště</strong>
+              {% endif %}
+
+              <br>
+
+              {{ next_match.match_date|date:"d.m.Y H:i" }}
+            {% else %}
+              Žádný nadcházející zápas.
+            {% endif %}
+          </p>
+
+          <a href="#" class="btn btn-primary">Nahlaš se</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Příští trénink</h5>
+          <p class="card-text">3.9.2026 17:00–18:30 Tornádo Hradiště</p>
+          <a href="#" class="btn btn-primary">Nahlaš se</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5">
+  <h1>Vítejte na stránkách Tornáda Hradiště</h1>
   <p>Jsme malý fotbalový klub z Plzně, hrající 9. nejvyšší soutěž.</p>
+</section>
+
 {% endblock %}

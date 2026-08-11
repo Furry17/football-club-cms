@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # Local apps
     'pages',
+    'matches',
     # Django apps
     'django.contrib.admin',
     'django.contrib.auth',

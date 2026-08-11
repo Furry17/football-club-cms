@@ -49,31 +49,12 @@
       </div>
     </nav>
     </header>
-<section class="py-2">
-    <div class="row">
-  <div class="col-sm-6 mb-3 mb-sm-0">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Příští zápas</h5>
-        <p class="card-text">9.8 2026 18:00 Tornádo Hradiště - Město Touškov B</p>
-        <a href="#" class="btn btn-primary">Nahlaš se</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Příští trénink</h5>
-        <p class="card-text">3.9 2026 17:00 - 18:30 Tornádo Hradiště</p>
-        <a href="#" class="btn btn-primary">Nahlaš se</a>
-      </div>
-    </div>
-  </div>
-</div>
-<section class="py-5">
-    <main class="container mt-4">{% block content %}
+    <main class="container mt-4">
       <div class="container text-center">
-      {% endblock %}</main>
+        {% block content %}
+        {% endblock %}
+      </div>
+    </main>
   <section class="py-5">
       <div class="card">
   <h5 class="card-header">Poslední zápas</h5>
@@ -81,6 +62,8 @@
     <h5 class="card-title">Tornádo Hradiště - Robstav 5:0 (2:0)</h5>
     <a href="#" class="btn btn-primary">Detail Zápasu</a>
   </div>
+  </div>
+  </section>
 </div>
     {% block scripts %}
     <script
@@ -89,8 +72,8 @@
       crossorigin="anonymous"
     ></script>
     {% endblock %}
-  </body>
-  <footer>
+    <footer>
     <p>&copy; 2026 Tornádo Hradiště</p>
   </footer>
+  </body>
 </html>
