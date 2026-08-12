@@ -40,7 +40,10 @@
           <h5 class="card-title">Příští trénink</h5>
           <p class="card-text">
             {% if next_training %}
-              {{ next_training.training_date|date:"d.m.Y H:i" }} – {{ next_training.location }}
+              {{ next_training.training_date|date:"d.m.Y" }}
+              {{ next_training.start_time|time:"H:i" }}
+              – {{ next_training.location }}
+              <br>
               <a href="{% url 'training_detail' next_training.pk %}" class="btn btn-primary">Nahlaš se</a>
             {% else %}
               Žádný nadcházející trénink.
